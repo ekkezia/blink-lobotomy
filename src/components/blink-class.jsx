@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import * as tf from "@tensorflow/tfjs";
-import GameForm from "./game-form";
+import { SUBMIT_STATUS } from "../App";
 const faceLandmarksDetection = require("@tensorflow-models/face-landmarks-detection");
 
 class BlinkClass extends React.Component {
@@ -170,19 +170,54 @@ class BlinkClass extends React.Component {
 
   render() {
     return (
-      <div style={{ margin: 20 }}>
+      <div className="form-container">
         {this.state.allowStart ? (
-          <>
-            <div>
-              <label>Name </label>
-              <input aria-label="Name" ref={this.nameRef}></input>
-              <button type="button" onClick={() => this.handleClick()}>
-                {this.props.isOpen ? "Stop" : "Submit & Start Game"}
+          this.props.submitStatus === SUBMIT_STATUS.SUCCESS ? (
+            <>
+              <h4>
+                <em>Congrats! You blinked.</em>
+              </h4>
+              <p>You:</p>
+              <img
+                src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${this.props.playerName}.png`}
+              />
+              <button type="button" onClick={this.props.handleRestartGame}>
+                Restart Game
               </button>
-            </div>
-          </>
+            </>
+          ) : (
+            <>
+              <h4>
+                <em>Welcome to Blink Lobotomy</em>
+              </h4>
+              <p>Instructions:</p>
+              <p>1. You are in a blinking competition.</p>
+              <p>
+                2. Your task is to look at the camera, then blink as fast as you
+                can.
+              </p>
+              <p>3. Fill in the form below to begin the game.</p>
+
+              <form>
+                <label>Name*</label>
+                <input aria-label="Name" ref={this.nameRef}></input>
+                <button type="button" onClick={() => this.handleClick()}>
+                  {this.props.isOpen ? "Stop" : "Submit & Start Game"}
+                </button>
+              </form>
+
+              <p>
+                Note: Contact{" "}
+                <a href="mailto:e.kezia@gmail.com" target="_blank">
+                  e.kezia@gmail.com
+                </a>{" "}
+                or <a href="https://instagram.com/ekezia">@ekezia</a> for
+                assistance.
+              </p>
+            </>
+          )
         ) : (
-          "Loading... ⏳"
+          <p>Loading... ⏳</p>
         )}
       </div>
     );
