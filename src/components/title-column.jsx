@@ -5,7 +5,7 @@ const TitleColumn = () => {
   const [hide, setHide] = useState(false);
 
   return (
-    <>
+    <div>
       <div
         style={{
           position: "relative",
@@ -17,6 +17,29 @@ const TitleColumn = () => {
       >
         <h2>Blink Lobotomy</h2>
       </div>
+      <p style={{ padding: "1rem" }}>Chai Wan, 02/11/2024 21:00</p>
+      <p style={{ padding: "1rem" }}>
+        Oh blink, a gentle, fleeting friend,
+        <br />
+        In shadows soft, our eyes you tend.
+        <br />
+        <br />
+        You bring sweet drops to parched sight, <br />
+        Guarding us from the screen’s harsh light. <br />
+        With every wink, a shield you weave, <br />
+        A break from sights that never leave. <br />
+        You stop the screen's relentless glare, <br />
+        In moisture's dance, you show you care. <br />
+        <br />
+        So join the race—a blink is all,
+        <br />
+        The healthiest contest in this hall. <br />
+        <br />
+        Look to the lens, let lashes meet, <br />
+        A blink, a beat, your task complete. <br />
+        For those who stare shall surely find, <br />
+        The cost of screens upon the mind.
+      </p>
       {/* <div
         onClick={() => setHide(!hide)}
         style={{
@@ -26,12 +49,11 @@ const TitleColumn = () => {
           width: 20,
           height: 60,
           zIndex: 3,
-          borderRadius: "0 0.5rem 0.5rem 0",
         }}
       >
         👁️
       </div> */}
-    </>
+    </div>
   );
 };
 

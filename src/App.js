@@ -215,7 +215,6 @@ const App = () => {
               height: "100%",
               objectFit: "cover",
               filter: `blur(${(1 - opacity) * 100}px)`,
-              borderRadius: "1rem",
               boxShadow: `inset ${mouseX / 100}px ${
                 mouseY / 100
               }px 20px ${shadowColor}`,

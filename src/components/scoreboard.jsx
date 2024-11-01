@@ -31,35 +31,34 @@ const Scoreboard = ({ isSubmitting }) => {
       <div>
         <h3 style={{ marginBottom: "1rem" }}>Leaderboard</h3>
         <div className="overflow-y">
-          {loading
-            ? "Loading... ⏳"
-            : scoreboardData
-                .sort((a, b) => a.time - b.time)
-                .map((data, idx) => {
-                  return (
-                    <div
-                      key={data.id}
-                      style={{
-                        display: "flex",
-                        gap: "0.5rem",
-                        marginBottom: "0.5rem",
-                      }}
-                    >
-                      <p>{idx === 0 ? "👑" : idx + 1}</p>
+          {loading ? (
+            <p>Loading... </p>
+          ) : (
+            scoreboardData
+              .sort((a, b) => a.time - b.time)
+              .map((data, idx) => {
+                return (
+                  <div key={data.id} style={{ marginBottom: "1rem" }}>
+                    <div className="flex" style={{ justifyContent: "left" }}>
+                      <p>{idx === 0 ? "꧁ ༺👑༻ ꧂" : `𓆩${idx + 1}𓆪`}&nbsp;</p>
                       <img
                         src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${data.name}.png`}
                         style={{ width: 40, height: 40, objectFit: "cover" }}
                         onMouseEnter={() => setHoveredData(data)}
                         onMouseLeave={() => setHoveredData(null)}
                       />
-                      <p>
-                        <em>{data.name === "" ? "Anonymous" : data.name}</em>{" "}
-                        blinks <b>{data.blink_count}</b> times in{" "}
-                        <b>{data.time}</b> seconds.
-                      </p>
                     </div>
-                  );
-                })}
+                    <p>
+                      <em>
+                        <u>{data.name === "" ? "Anonymous" : data.name}</u>
+                      </em>{" "}
+                      blinks <b>{data.blink_count}</b> times in{" "}
+                      <b>{data.time}</b> seconds.
+                    </p>
+                  </div>
+                );
+              })
+          )}
         </div>
       </div>
       {hoveredData !== null && (
@@ -71,7 +70,6 @@ const Scoreboard = ({ isSubmitting }) => {
             transform: "translate(-50%, -50%)",
             zIndex: 99,
             background: "grey",
-            borderRadius: "0.5rem",
             padding: "1rem",
           }}
         >
