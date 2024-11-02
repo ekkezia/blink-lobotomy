@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const TitleColumn = () => {
-  // mouse
-  const [hide, setHide] = useState(false);
-
   return (
     <div>
       <div
@@ -17,7 +14,8 @@ const TitleColumn = () => {
       >
         <h2>Blink Lobotomy</h2>
       </div>
-      <p style={{ padding: "1rem" }}>Chai Wan, 02/11/2024 21:00</p>
+      <p style={{ padding: "1rem" }}>ִֶָ𓂃 ࣪˖ ִֶָInfinite Scroll ˖ ִֶָ𓂃 ࣪˖ ִ</p>
+      <p style={{ padding: "1rem" }}>Hong Kong, 02/11/2024 21:00</p>
       <p style={{ padding: "1rem" }}>
         Oh blink, a gentle, fleeting friend,
         <br />

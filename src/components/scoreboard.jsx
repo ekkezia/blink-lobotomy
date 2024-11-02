@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
+import { SUBMIT_STATUS } from "../App";
 
-const Scoreboard = ({ isSubmitting }) => {
+const Scoreboard = ({ isSubmitting, submitStatus }) => {
   const [scoreboardData, setScoreboardData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingImage, setLoadingImage] = useState(true);
 
   // Fetch blink-lobotomy scoreboard data from Supabase
   const fetchData = async () => {
@@ -74,6 +76,7 @@ const Scoreboard = ({ isSubmitting }) => {
           }}
         >
           <img
+            key={`${hoveredData.name}-${submitStatus}`}
             src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${hoveredData.name}.png`}
             style={{
               width: 600,

@@ -131,6 +131,7 @@ const App = () => {
   const { x: mouseX, y: mouseY } = useMousePosition();
 
   const handleRestartGame = () => {
+    console.log("Restarting game...");
     setSubmitStatus(SUBMIT_STATUS.IDLE);
     setForm({ name: "", time: 0, blinkCount: 0 });
   };
@@ -227,6 +228,7 @@ const App = () => {
         </div>{" "}
         <ScoreboardColumn
           isSubmitting={submitStatus === SUBMIT_STATUS.SUBMITTING}
+          submitStatus={submitStatus}
         />
       </div>
     </ScoreboardContextProvider>

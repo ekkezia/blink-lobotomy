@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Scoreboard from "./scoreboard";
 
 const ScoreboardColumn = ({ isSubmitting }) => {
-  // mouse
-  const [hide, setHide] = useState(false);
-
   return (
     <div
       className="column"

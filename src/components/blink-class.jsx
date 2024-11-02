@@ -181,7 +181,7 @@ class BlinkClass extends React.Component {
               <img
                 src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${this.props.playerName}.png`}
               />
-              <button type="button" onClick={this.props.handleRestartGame}>
+              <button type="button" onClick={this.props.onRestartGame}>
                 Restart Game
               </button>
             </>
