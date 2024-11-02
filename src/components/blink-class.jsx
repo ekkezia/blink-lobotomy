@@ -188,6 +188,10 @@ class BlinkClass extends React.Component {
                 src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${
                   this.props.playerName
                 }.png?t=${new Date().getTime()}`}
+                style={{
+                  width: 600,
+                  height: 400,
+                }}
               />
               <br />
               <br />

@@ -30,11 +30,31 @@ const App = () => {
   });
 
   const [congratsSound, setCongratsSound] = useState();
+  const [instructionSound, setInstructionSound] = useState();
 
   useEffect(() => {
     const sound = new Audio("/congratulations.wav");
     setCongratsSound(sound);
+
+    const instruction_Sound = new Audio("/instruction.mp3");
+    setInstructionSound(instruction_Sound);
   }, []);
+
+  useEffect(() => {
+    if (instructionSound) {
+      let intervalId;
+
+      if (submitStatus === SUBMIT_STATUS.IDLE) {
+        intervalId = setInterval(() => {
+          instructionSound.play().catch((error) => {
+            console.error("Error playing sound:", error);
+          });
+        }, 10000);
+      }
+
+      return () => clearInterval(intervalId);
+    }
+  }, [instructionSound]);
 
   // Start Game
   const handleStartGame = (name) => {

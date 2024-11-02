@@ -116,7 +116,7 @@ p {
 }
 
 .column.main {
-  height: 97dvh;
+  height: 95dvh;
   background: $primary-color;
   position: relative;
   @media (max-width: 480px) {
@@ -149,7 +149,7 @@ p {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   z-index: 2;
   position: relative;
-  max-width: 420px;
+  max-width: 600px;
   // position: relative;
   // top: 50%;
   // left: 50%;
