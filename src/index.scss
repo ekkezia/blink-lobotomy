@@ -193,3 +193,10 @@ video {
   z-index: 0;
 
 }
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

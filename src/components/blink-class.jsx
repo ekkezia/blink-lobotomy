@@ -176,13 +176,17 @@ class BlinkClass extends React.Component {
               <h4>
                 <em>Congrats! You blinked.</em>
               </h4>
-              <p>You:</p>
+              <p>꩜ .ᐟ Positive affirmations for {this.props.playername} ꩜ .ᐟ</p>
               <img
                 src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${this.props.playerName}.png`}
               />
-              <button type="button" onClick={this.props.onRestartGame}>
-                Restart Game
-              </button>
+              <br />
+              <br />
+              <div className="center">
+                <button type="button" onClick={this.props.onRestartGame}>
+                  Restart Game
+                </button>
+              </div>
             </>
           ) : (
             <>
