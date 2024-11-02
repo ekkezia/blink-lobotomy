@@ -171,9 +171,9 @@ const App = () => {
                     width: "8px",
                     height: "50px",
                     background:
-                      Math.floor((opacity / 1) * 80) > 20
+                      Math.floor((opacity / 1) * 80) > 40
                         ? "green"
-                        : Math.floor((opacity / 1) * 80) > 10
+                        : Math.floor((opacity / 1) * 80) > 20
                         ? "yellow"
                         : "red",
                   }}

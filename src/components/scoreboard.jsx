@@ -5,7 +5,6 @@ import { SUBMIT_STATUS } from "../App";
 const Scoreboard = ({ isSubmitting, submitStatus }) => {
   const [scoreboardData, setScoreboardData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [loadingImage, setLoadingImage] = useState(true);
 
   // Fetch blink-lobotomy scoreboard data from Supabase
   const fetchData = async () => {
@@ -25,7 +24,9 @@ const Scoreboard = ({ isSubmitting, submitStatus }) => {
   useEffect(() => {
     // refetch data every time isSubmitting is updated
     fetchData();
-  }, [isSubmitting]);
+
+    if (submitStatus === SUBMIT_STATUS.SUCCESS) window.location.reload();
+  }, [isSubmitting, submitStatus]);
 
   const [hoveredData, setHoveredData] = useState(null);
   return (
@@ -77,7 +78,9 @@ const Scoreboard = ({ isSubmitting, submitStatus }) => {
         >
           <img
             key={`${hoveredData.name}-${submitStatus}`}
-            src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${hoveredData.name}.png`}
+            src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${
+              hoveredData.name
+            }.png?t=${new Date().getTime()}`}
             style={{
               width: 600,
               height: 400,

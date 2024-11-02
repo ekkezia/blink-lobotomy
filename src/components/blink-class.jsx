@@ -82,7 +82,6 @@ class BlinkClass extends React.Component {
         this.props.onBlink((prevCount) => prevCount + 1);
 
         if (!this.props.isOpen) {
-          console.log("please stop detecting");
           // stop detection
           this.setState({ detecting: "" });
           return null;
