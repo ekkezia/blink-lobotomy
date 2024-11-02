@@ -29,6 +29,13 @@ const App = () => {
     blinkCount: blinkCount,
   });
 
+  const [congratsSound, setCongratsSound] = useState();
+
+  useEffect(() => {
+    const sound = new Audio("/congratulations.wav");
+    setCongratsSound(sound);
+  }, []);
+
   // Start Game
   const handleStartGame = (name) => {
     setForm({ ...form, name: name, time: Math.floor(Date.now() / 1000) });
@@ -78,6 +85,10 @@ const App = () => {
         .upload(fileName, blob, {
           contentType: "image/png",
         });
+
+      congratsSound.play().catch((error) => {
+        console.error("Error playing sound:", error);
+      });
 
       if (error) {
         console.error("Upload error:", error);

@@ -8,10 +8,6 @@ const Clock = () => {
     setCTime(time);
   };
   setInterval(updateTime, 1000);
-  return (
-    <>
-      <p> {ctime}.</p>
-    </>
-  );
+  return <>{ctime}</>;
 };
 export default Clock;

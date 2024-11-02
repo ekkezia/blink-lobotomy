@@ -16,6 +16,8 @@ class BlinkClass extends React.Component {
       maxRight: 0,
     };
 
+    this.blinkSound = new Audio("blink.wav");
+
     this.nameRef = React.createRef();
   }
 
@@ -80,6 +82,10 @@ class BlinkClass extends React.Component {
         this.setState({ count: countN });
 
         this.props.onBlink((prevCount) => prevCount + 1);
+
+        this.blinkSound.play().catch((error) => {
+          console.error("Error playing sound:", error);
+        });
 
         if (!this.props.isOpen) {
           // stop detection
@@ -176,9 +182,12 @@ class BlinkClass extends React.Component {
               <h4>
                 <em>Congrats! You blinked.</em>
               </h4>
-              <p>꩜ .ᐟ Positive affirmations for {this.props.playername} ꩜ .ᐟ</p>
+              <p>꩜ .ᐟ Positive affirmations for {this.props.playerName} ꩜ .ᐟ</p>
               <img
-                src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${this.props.playerName}.png`}
+                key={`${this.props.playerName}-${new Date().getTime()}`}
+                src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${
+                  this.props.playerName
+                }.png?t=${new Date().getTime()}`}
               />
               <br />
               <br />
@@ -195,11 +204,14 @@ class BlinkClass extends React.Component {
               </h4>
               <p>Instructions:</p>
               <p>1. You are in a blinking competition.</p>
+
+              <p>2. Type a unique username.</p>
+
               <p>
-                2. Your task is to look at the camera, then blink as fast as you
+                3. Your task is to look at the camera, then blink as fast as you
                 can.
               </p>
-              <p>3. Fill in the form below to begin the game.</p>
+              <p>4. Fill in the form below to begin the game.</p>
 
               <form>
                 <label>Name*</label>

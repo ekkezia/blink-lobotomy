@@ -25,7 +25,10 @@ const Scoreboard = ({ isSubmitting, submitStatus }) => {
     // refetch data every time isSubmitting is updated
     fetchData();
 
-    if (submitStatus === SUBMIT_STATUS.SUCCESS) window.location.reload();
+    setTimeout(() => {
+      fetchData();
+      console.log("fetch data");
+    }, 2000);
   }, [isSubmitting, submitStatus]);
 
   const [hoveredData, setHoveredData] = useState(null);
@@ -77,7 +80,7 @@ const Scoreboard = ({ isSubmitting, submitStatus }) => {
           }}
         >
           <img
-            key={`${hoveredData.name}-${submitStatus}`}
+            key={`${hoveredData.name}-${scoreboardData}`}
             src={`https://lmgbcuolwhkqoowxnaik.supabase.co/storage/v1/object/public/blink_lobotomy/blink_lobotomy_${
               hoveredData.name
             }.png?t=${new Date().getTime()}`}
